@@ -2,7 +2,6 @@ let http = require('http');
 let fs = require('fs');
 
 var express = require('express');
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var app = express();
 var path = require('path')
 const fetch = require('node-fetch');
@@ -19,18 +18,6 @@ app.get('/WaitTimes', function(req,res){
   //res.send('HIII');
   getHAData().then(function(data){res.send(data)});
 });
-
-function httpGet(theUrl)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
-}
-
-const cheerio = require("cheerio");
-const Nightmare = require("nightmare");
-const nightmare = Nightmare({show:true});
 
 // Define the URLS we will be scraping
 const haURL = "https://www.ha.org.hk/aedwt/aedwt.html?Lang=ENG"
