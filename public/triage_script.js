@@ -42,7 +42,7 @@ var json = {
                     choices: ["< 30", "30-65", "> 65"]
                 }
             ]     
-        }, /*{    
+        }, {    
             questions: [
                 {
                     type: "radiogroup",
@@ -152,7 +152,7 @@ var json = {
                     choices: ["Yes", "No", "Not sure"]
                 }
             ]     
-        }, */ { 
+        },  { 
             questions: [
                 {
                     type: "text",
