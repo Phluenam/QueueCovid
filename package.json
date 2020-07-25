@@ -1,0 +1,35 @@
+{
+  "name": "queuecovid",
+  "version": "1.0.0",
+  "description": "HealthHack Project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Phluenam/QueueCovid.git"
+  },
+  "keywords": [
+    "Remote",
+    "Queueingg"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Phluenam/QueueCovid/issues"
+  },
+  "homepage": "https://github.com/Phluenam/QueueCovid#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "http": "0.0.1-security",
+    "nightmare": "^3.0.2",
+    "node-fetch": "^2.6.0",
+    "pug": "^3.0.0",
+    "rp": "^0.2.0",
+    "underscore": "^1.10.2",
+    "xmlhttprequest": "^1.8.0"
+  }
+}

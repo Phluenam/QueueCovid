@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Triage</title>
+  <meta name="viewport" content="width=device-width"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  .bg-1 { 
+    background-color: #474e5d;
+    color: #ffffff;
+  }
+  .bg-2 { 
+    background-color: #ffffff;
+    color: #555555;
+  }
+  .bg-3 { 
+    background-color: #2f2f2f;
+    color: #fff;
+  }
+  .container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+    color: #1abc9c;
+  }
+  .btn-block small{
+    display: block
+  }
+</style>
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><img src="logo_grey.png" class="img-responsive" alt="Logo" style="max-width:100px; margin-top: -18px"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">中文</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid bg-1 text-center">
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <button class="btn btn-default btn-lg active">
+        <input type="radio" name="options" id="option1" value='HK' autocomplete="off"> Hong Kong Island
+      </button>
+      <button class="btn btn-default btn-lg">
+        <input type="radio" name="options" id="option2"  value='KLN' autocomplete="off"> Kowloon
+      </button>
+      <button class="btn btn-default btn-lg">
+        <input type="radio" name="options" id="option3"  value='NT' autocomplete="off"> New Territories
+      </button>
+    </div>
+    <div id='WaitTimesTable'>
+    </div>
+    <script>
+        var hospDict={};
+        function makeBooking(code){
+          console.log('book '+code);
+          localStorage.hospital=JSON.stringify(hospDict[code]);
+          window.location="confirm.html";
+        }
+        function makeButton(entry, lang) {
+          return "<button  type=\"button\" class=\"btn btn-primary btn-block\" onclick=makeBooking(\""+entry['code']+"\") >"+entry[lang]+"<small> Wait Time : "+entry['WaitTime']+" hours </small> </button> ";
+        }
+        function showTable(data,lang='EN') {
+          table ='<div class=\"btn-group btn-group-toggle\" data-toggle=\"buttons\">';
+          data.sort(function(x,y){return 1-(x['WaitTime'] < y['WaitTime'])*2} )
+            .forEach(entry => {
+            table += makeButton(entry,lang);
+            hospDict[entry['code']]=entry;
+          });
+          table += '</div>';
+          
+          document.getElementById("WaitTimesTable").innerHTML = table;
+        };
+        const btn = document.querySelectorAll('input[name="options"]');
+        for (let rb of btn) {
+          console.log(rb.value);
+          rb.onchange = function () {
+            fetch('/WaitTimes')
+              .then(response => response.json())
+              .then( response => {
+                console.log("Received response");
+                showTable(response[rb.value]);
+            });
+          }
+        }
+    </script>
+  <p id="demo"></p>
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Paragraph changed!";
+}
+</script>
+</div>
+<div class="container-fluid bg-2 text-center">
+</div>
+
+<footer class="container-fluid bg-3 text-center">
+  <p>© 2020 All rights reserved.</p>
+</footer>
+</body>
+</html>
+<script>
+//console.log(JSON.stringify(localStorage.data, null, 3))
+</script>
