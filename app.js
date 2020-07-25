@@ -13,9 +13,6 @@ app.get('/',function(req,res){
 });
 
 app.get('/WaitTimes', function(req,res){
-  console.log("hey we got a request");
-  //console.log(req);
-  //res.send('HIII');
   getHAData().then(function(data){res.send(data)});
 });
 
@@ -37,7 +34,7 @@ let getHAData = async () => {
     district = entry.seq.split('-')[0]
     districtLists[district].push({'code':entry.hospCode,'EN':entry.hospNameEn,'WaitTime':entry.topWait});
   });
-  console.log(districtLists);
+  //console.log(districtLists);
   return districtLists;
 };
 
