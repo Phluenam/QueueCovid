@@ -7,48 +7,69 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
-  .bg-1 { 
-    background-color: #474e5d;
-    color: #ffffff;
-  }
-  .bg-2 { 
-    background-color: #ffffff;
-    color: #555555;
-  }
-  .bg-3 { 
-    background-color: #2f2f2f;
-    color: #fff;
-  }
-  .container-fluid {
-    padding-top: 70px;
-    padding-bottom: 70px;
-  }
-  .navbar {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    border: 0;
-    border-radius: 0;
-    margin-bottom: 0;
-    font-size: 12px;
-    letter-spacing: 5px;
-  }
-  .navbar-nav  li a:hover {
-    color: #1abc9c;
-  }
-  .btn-block small{
-    display: block
-  }
-  #divcard {
-    background-color: #2f2f2f;
-    width: 300px;
-    border: 15px solid lightblue;
-    padding: 20px;
-    margin: auto;
-  }
-</style>
+    html, body {
+        margin: 0;
+        height: 100%;
+    }
+    section {
+      display: flex;
+      flex-flow: column;
+      height: 100vh;
+    }
+    .bg-1 { 
+      background-color: #474e5d;
+      color: #ffffff;
+      width: 100%;
+    }
+    .bg-2 { 
+      background-color: #ffffff;
+      color: #555555;
+      min-height: 420px;
+      flex: 1;
+    }
+    .bg-3 { 
+      background-color: #2f2f2f;
+      color: #fff;
+      width: 100%;
+    }
+    .container-fluid {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+    .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+      width: 100%;
+    }
+    .navbar-nav  li a:hover {
+      color: #1abc9c;
+    }
+    .btn-block small{
+      display: block
+    }
+    #divcard {
+      background-color: #2f2f2f;
+      width: 500px;
+      border: 15px solid #474e5d;
+      padding: 20px;
+      margin: auto;
+      color: white;
+    }
+    .btn-dark { 
+      color: #ffffff; 
+      background-color: #474e5d; 
+      border-color: #555; 
+    }
+  </style>
 </head>
 
 <body>
+  <section>
 <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
@@ -68,12 +89,17 @@
   </div>
 </nav>
 <div class="container-fluid bg-1 text-center">
+  <h1>Confirm Information</h1>
+</div>
+<div class="container-fluid bg-2 text-center">
   <div id="divcard"> 
+    <h3>Booking Details</h3>
+    <br>
     <p id="name" style="text-align:left"></p>
     <p id="contact" style="text-align:left"></p>
     <p id="hkid" style="text-align:left"></p>
     <p id="hospital" style="text-align:left"></p>
-    <button type='button' class="btn btn-primary btn-block">Confirm</button>
+    <button type='button' class="btn btn-dark btn-block">Confirm</button>
   </div>
 
   <script>
@@ -93,12 +119,11 @@
   }
   </script>
 </div>
-<div class="container-fluid bg-2 text-center">
-</div>
 
 <footer class="container-fluid bg-3 text-center">
   <p>© 2020 All rights reserved.</p>
 </footer>
+    </section>
 </body>
 </html>
 <script>
