@@ -7,7 +7,7 @@ var app = express();
 var path = require('path')
 const fetch = require('node-fetch');
 
-app.use(express.static('docs')); 
+app.use(express.static('public')); 
 
 app.get('/',function(req,res){
   res.sendFile('index.html');
