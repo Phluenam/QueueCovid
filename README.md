@@ -1,2 +1,2 @@
 # QueueCovid
-MIT HealthHack proejct
+MIT HealthHack project
