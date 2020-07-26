@@ -202,21 +202,6 @@ window.survey = new Survey.Model(json);
 survey
     .onComplete
     .add(function (result) {
-        /*
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://localhost:3000/surveyresult");
-        xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-        xhr.onload = xhr.onerror = function () {
-            if (xhr.status == 200) {
-                options.showDataSavingSuccess(); // you may pass a text parameter to show your own text
-                // Or you may clear all messages:
-                // options.showDataSavingClear();
-            } else {
-                //Error
-                options.showDataSavingError(); // you may pass a text parameter to show your own text
-            }
-        };
-        xhr.send(JSON.stringify(sender.data));*/
         data = result.data;
         console.log(data);
         localStorage.data = JSON.stringify(data);
